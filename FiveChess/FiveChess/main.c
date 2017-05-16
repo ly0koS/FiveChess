@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include<stdio.h>
-int Choose(int i)
+int Choose(int i,char map[21][21])
 {
 	int system(const char *string);
 	while (1)
@@ -10,7 +10,7 @@ int Choose(int i)
 		scanf_s("%d", &i);
 		if (i == 1)
 		{
-			DrawMap();
+			DrawMap(map[21][21]);
 		}
 		else if (i == 2)
 		{
@@ -46,6 +46,6 @@ int Result()
 int x;
 int main()
 {
-	int map[21][21];
-	Choose(x);
+	char map[21][21];
+	Choose(x,map);
 }
