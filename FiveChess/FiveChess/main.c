@@ -25,22 +25,7 @@ int Choose(int i,int map[21][21])
 }
 int DrawMap(int map[21][21])
 {
-	int i,j;
-	for (i = 0; i < 21; i++)
-	{
-		map[i][0] = i+1;
-	}
-	for (i = 0; i < 21; i++)
-	{
-		map[0][i] = i+1;
-	}
-	for (i = 0; i < 21; i++)
-	{
-		for (j = 0; j < 21; j++)
-		{
-//			printf("%d", map[i][j]);    #´æÔÚÎÊÌâ
-		}
-	}
+
 }
 int PutChess()
 {
