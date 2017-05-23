@@ -46,7 +46,6 @@ int DrawMap(int map[21][21])
 			map[i][j] = '    ';
 		}
 	}
-	PutChess(map);
 	system("pause");
 }
 int PutChess()
