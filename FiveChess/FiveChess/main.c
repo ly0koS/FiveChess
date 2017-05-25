@@ -30,21 +30,25 @@ int DrawMap(int map[21][21])
 	for (i = 0; i < 21; i++)
 	{
 		map[0][i] = i;
+		map[i][0] = i;
 		printf("%d    ", map[0][i]);
 	}
 	printf("\n\n\n");
 	for (i = 1; i < 21; i++)
 	{
-		map[i][0]=i;
-		printf("%d", map[i][0]);
-		printf("\n\n\n");
-	}
-	for (i = 1; i < 21; i++)
-	{
+		printf("%d    ", map[i][0]);
 		for (j = 1; j < 21; j++)
 		{
-			map[i][j] = '    ';
+			if (map[i][j] == 0)
+			{
+				printf("    ");
+			}
+			else
+			{
+				printf("    %c", map[i][j]);//这个方式可以实现但现在还没办法改好
+			}
 		}
+		printf("\n\n\n");
 	}
 	PutChess(map);
 	system("pause");
@@ -75,6 +79,7 @@ int PutChess(int map[21][21])
 		}
 		else
 		{
+			DrawMap(map);
 			Judge(map);
 		}
 	}
@@ -94,6 +99,6 @@ int Result()
 int x;
 int main()
 {
-	int map[21][21];
+	int map[21][21] = { 0 };
 	Choose(x,map);
 }
