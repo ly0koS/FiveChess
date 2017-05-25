@@ -45,7 +45,7 @@ int DrawMap(int map[21][21])
 			}
 			else
 			{
-				printf("    %c", map[i][j]);//这个方式可以实现但现在还没办法改好
+				printf("    %c", map[i][j]);
 			}
 		}
 		printf("\n\n\n");
@@ -61,11 +61,13 @@ int PutChess(int map[21][21])
 	{
 		while (1)
 		{
+			getchar();
 			printf("黑方输入落子坐标,以空格分开:");
-			scanf_s("%d %d", &x, &y);
+			scanf_s("\n%d %d", &x, &y);
 			if (!(x > 0 && x < 21) || !(y > 0 || y < 21))
 			{
 				printf("输入不合法，请重新输入！\n");
+				continue;
 			}
 			else
 			{
@@ -73,8 +75,9 @@ int PutChess(int map[21][21])
 			}
 		}
 		map[x][y] = '*';
+		fflush(stdin);
 		printf("悔棋？(y/n):");
-		ch = getchar();
+		scanf_s("%c\n", &ch);
 		if (ch == y)
 		{
 			WithDraw(map, x, y);
