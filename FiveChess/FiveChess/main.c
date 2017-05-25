@@ -89,7 +89,7 @@ int PutChess(int map[21][21])
 int WithDraw(int map[21][21],int x,int y)
 {
 	map[x][y] = 0;
-	return 0
+	return 0;
 }
 int Judge(int map[21][21])
 {
