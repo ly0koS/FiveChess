@@ -45,7 +45,7 @@ int DrawMap(int map[21][21])
 			}
 			else
 			{
-				printf("    %c", map[i][j]);//这个方式可以实现但现在还没办法改好
+				printf("    %c", map[i][j]);
 			}
 		}
 		for (j = 10; j < 21; j++)
@@ -56,7 +56,7 @@ int DrawMap(int map[21][21])
 			}
 			else
 			{
-				printf("     %c", map[i][j]);//这个方式可以实现但现在还没办法改好
+				printf("     %c", map[i][j]);
 			}
 		}
 		printf("\n\n\n");
@@ -80,8 +80,7 @@ int DrawMap(int map[21][21])
 			}
 			else
 			{
-				printf("    %c", map[i][j]);//这个方式可以实现但现在还没办法改好
-			}
+				printf("    %c", map[i][j]);
 		}
 		for (j = 10; j < 21; j++)
 		{
