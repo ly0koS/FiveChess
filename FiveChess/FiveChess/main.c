@@ -78,6 +78,28 @@ int PutChess(int map[21][21])
 			Judge(map);
 		}
 	}
+	while (1)
+	{
+		printf("白方输入落子坐标,以空格分开:");
+		scanf_s("%d %d", &x, &y);
+		if (!(x > 0 && x < 21) || !(y > 0 || y < 21))
+		{
+			printf("输入不合法，请重新输入！\n");
+		}
+		else
+		{
+			break;
+		}
+	}
+	map[x][y] = '#';
+	if ((ch = getchar()) == 'Z')
+	{
+		WithDraw(map);
+	}
+	else
+	{
+		Judge(map);
+	}
 }
 int WithDraw()
 {
