@@ -164,7 +164,7 @@ int Judge(int map[21][21])
 						flag = 0;
 					}
 				}
-				for (x = i+4, y = j+4; x >i, y > j; x--, y--)
+				for (x = i-1, y = j-1; x >i-5, y > j-5; x--, y--)
 				{
 					if (map[x][j] == '*')
 					{
