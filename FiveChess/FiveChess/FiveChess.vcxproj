@@ -25,7 +25,6 @@
     <ProjectGuid>{098DFAE2-CD3D-42ED-928E-BDF2195C94B0}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>FiveChess</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

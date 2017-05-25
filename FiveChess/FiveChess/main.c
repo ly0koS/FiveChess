@@ -30,21 +30,25 @@ int DrawMap(int map[21][21])
 	for (i = 0; i < 21; i++)
 	{
 		map[0][i] = i;
+		map[i][0] = i;
 		printf("%d    ", map[0][i]);
 	}
 	printf("\n\n\n");
 	for (i = 1; i < 21; i++)
 	{
-		map[i][0]=i;
-		printf("%d", map[i][0]);
-		printf("\n\n\n");
-	}
-	for (i = 1; i < 21; i++)
-	{
+		printf("%d    ", map[i][0]);
 		for (j = 1; j < 21; j++)
 		{
-			map[i][j] = '    ';
+			if (map[i][j] == 0)
+			{
+				printf("    ");
+			}
+			else
+			{
+				printf("    %c", map[i][j]);//这个方式可以实现但现在还没办法改好
+			}
 		}
+		printf("\n\n\n");
 	}
 	PutChess(map);
 	system("pause");
@@ -69,41 +73,23 @@ int PutChess(int map[21][21])
 			}
 		}
 		map[x][y] = '*';
-		if ((ch = getchar()) == 'Z')
+		printf("悔棋？(y/n):");
+		ch = getchar();
+		if (ch == y)
 		{
-			WithDraw(map);
+			WithDraw(map, x, y);
 		}
 		else
 		{
+			DrawMap(map);
 			Judge(map);
 		}
 	}
-	while (1)
-	{
-		printf("白方输入落子坐标,以空格分开:");
-		scanf_s("%d %d", &x, &y);
-		if (!(x > 0 && x < 21) || !(y > 0 || y < 21))
-		{
-			printf("输入不合法，请重新输入！\n");
-		}
-		else
-		{
-			break;
-		}
-	}
-	map[x][y] = '#';
-	if ((ch = getchar()) == 'Z')
-	{
-		WithDraw(map);
-	}
-	else
-	{
-		Judge(map);
-	}
 }
-int WithDraw()
+int WithDraw(int map[21][21],int x,int y)
 {
-
+	map[x][y] = 0;
+	return 0
 }
 int Judge(int map[21][21])
 {
@@ -116,6 +102,6 @@ int Result()
 int x;
 int main()
 {
-	int map[21][21];
+	int map[21][21] = { 0 };
 	Choose(x,map);
 }
