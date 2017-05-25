@@ -34,18 +34,64 @@ int DrawMap(int map[21][21])
 		printf("%d    ", map[0][i]);
 	}
 	printf("\n\n\n");
-	for (i = 1; i < 21; i++)
+	for (i = 1; i < 10; i++)
 	{
-		printf("%d    ", map[i][0]);
-		for (j = 1; j < 21; j++)
+		printf("%d", map[i][0]);
+		for (j = 1; j < 10; j++)
 		{
 			if (map[i][j] == 0)
 			{
-				printf("    ");
+				printf("     ");
 			}
 			else
 			{
 				printf("    %c", map[i][j]);//这个方式可以实现但现在还没办法改好
+			}
+		}
+		for (j = 10; j < 21; j++)
+		{
+			if (map[i][j] == 0)
+			{
+				printf("      ");
+			}
+			else
+			{
+				printf("     %c", map[i][j]);//这个方式可以实现但现在还没办法改好
+			}
+		}
+		printf("\n\n\n");
+	}
+	for (i = 10; i < 21; i++)
+	{
+		printf("%d", map[i][0]);
+		if (map[i][1] == 0)
+		{
+			printf("    ");
+		}
+		else
+		{
+			printf("   %c", map[i][1]);
+		}
+		for (j = 2; j < 10; j++)
+		{
+			if (map[i][j] == 0)
+			{
+				printf("     ");
+			}
+			else
+			{
+				printf("    %c", map[i][j]);//这个方式可以实现但现在还没办法改好
+			}
+		}
+		for (j = 10; j < 21; j++)
+		{
+			if (map[i][j] == 0)
+			{
+				printf("      ");
+			}
+			else
+			{
+				printf("     %c", map[i][j]);//这个方式可以实现但现在还没办法改好
 			}
 		}
 		printf("\n\n\n");
