@@ -14,7 +14,7 @@ int Choose(int i,int map[21][21])
 		}
 		else if (i == 2)
 		{
-			break;
+			exit(0);
 		}
 		else
 		{
@@ -136,11 +136,111 @@ int WithDraw()
 }
 int Judge(int map[21][21])
 {
-	
+	int i = 0, j = 0;
+	int x = 0, y = 0;
+	int flag = 0;
+	for (i = 1; i < 21; i++)
+	{
+		for (j = 1; j < 21; j++)
+		{
+			if (map[i][j] == '*')
+			{
+				for (x = i+1, y = j+1; x < i + 5, y < j + 5; x++, y++)
+				{
+					if (map[x][j] == '*')
+					{
+						flag = 1;
+					}
+					else if (map[i][y] == '*')
+					{
+						flag = 1;
+					}
+					else if (map[x][y] == '*')
+					{
+						flag = 1;
+					}
+					else
+					{
+						flag = 0;
+					}
+				}
+				for (x = i+4, y = j+4; x >i, y > j; x--, y--)
+				{
+					if (map[x][j] == '*')
+					{
+						flag = 1;
+					}
+					else if (map[i][y] == '*')
+					{
+						flag = 1;
+					}
+					else if (map[x][y] == '*')
+					{
+						flag = 1;
+					}
+					else
+					{
+						flag = 0;
+					}
+				}
+				Result(flag);
+			}
+			else if (map=='#')
+			{
+				flag = 0;
+				for (x = i+1, y = j+1; x < i + 5, y < j + 5; x++, y++)
+				{
+					if (map[x][j] == '#')
+					{
+						flag = 2;
+					}
+					else if (map[i][y] == '#')
+					{
+						flag = 2;
+					}
+					else if (map[x][y] == '#')
+					{
+						flag = 2;
+					}
+				}
+				for (x = i + 4, y = j + 4; x >= i, y >= j; x--, y--)
+				{
+					if (map[x][j] == '#')
+					{
+						flag = 2;
+					}
+					else if (map[i][y] == '#')
+					{
+						flag = 2;
+					}
+					else if (map[x][y] == '#')
+					{
+						flag = 2;
+					}
+				}
+				Result(flag);
+			}
+		}
+	}
 }
-int Result()
+int Result(int flag)
 {
-
+	if (flag == 1)
+	{
+		printf("黑方获胜！\n");
+		system("pause");
+		main();
+	}
+	else if (flag == 2)
+	{
+		printf("白方获胜！\n");
+		system("pause");
+		main();
+	}
+	else
+	{
+		return 0;
+	}
 }
 int x;
 int main()
