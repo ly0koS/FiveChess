@@ -29,13 +29,13 @@ int DrawMap(int map[21][21])
 	int i, j;
 	for (i = 0; i < 21; i++)
 	{
-		map[0][i] = i+1;
+		map[0][i] = i;
 		printf("%d    ", map[0][i]);
 	}
 	printf("\n\n\n");
 	for (i = 1; i < 21; i++)
 	{
-		map[i][0]=i+1;
+		map[i][0]=i;
 		printf("%d", map[i][0]);
 		printf("\n\n\n");
 	}
@@ -49,15 +49,41 @@ int DrawMap(int map[21][21])
 	PutChess(map);
 	system("pause");
 }
-int PutChess()
+int PutChess(int map[21][21])
 {
-
+	int x, y;
+	char ch;
+	while (1)
+	{
+		while (1)
+		{
+			printf("黑方输入落子坐标,以空格分开:");
+			scanf_s("%d %d", &x, &y);
+			if (!(x > 0 && x < 21) || !(y > 0 || y < 21))
+			{
+				printf("输入不合法，请重新输入！\n");
+			}
+			else
+			{
+				break;
+			}
+		}
+		map[x][y] = '*';
+		if ((ch = getchar()) == 'Z')
+		{
+			WithDraw(map);
+		}
+		else
+		{
+			Judge(map);
+		}
+	}
 }
 int WithDraw()
 {
 
 }
-int Judge()
+int Judge(int map[21][21])
 {
 
 }
