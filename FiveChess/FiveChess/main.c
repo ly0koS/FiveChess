@@ -41,7 +41,7 @@ int DrawMap(int map[21][21])
 		{
 			if (map[i][j] == 0)
 			{
-				printf("    +");
+				printf("     ");
 			}
 			else
 			{
@@ -52,7 +52,7 @@ int DrawMap(int map[21][21])
 		{
 			if (map[i][j] == 0)
 			{
-				printf("     +");
+				printf("      ");
 			}
 			else
 			{
@@ -66,7 +66,7 @@ int DrawMap(int map[21][21])
 		printf("%d", map[i][0]);
 		if (map[i][1] == 0)
 		{
-			printf("   +");
+			printf("    ");
 		}
 		else
 		{
@@ -76,7 +76,7 @@ int DrawMap(int map[21][21])
 		{
 			if (map[i][j] == 0)
 			{
-				printf("    +");
+				printf("     ");
 			}
 			else
 			{
@@ -87,7 +87,7 @@ int DrawMap(int map[21][21])
 		{
 			if (map[i][j] == 0)
 			{
-				printf("     +");
+				printf("      ");
 			}
 			else
 			{
