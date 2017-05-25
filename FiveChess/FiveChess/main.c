@@ -136,7 +136,7 @@ int WithDraw()
 }
 int Judge(int map[21][21])
 {
-
+	
 }
 int Result()
 {
