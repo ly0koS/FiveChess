@@ -41,7 +41,7 @@ int DrawMap(int map[21][21])
 		{
 			if (map[i][j] == 0)
 			{
-				printf("     ");
+				printf("    +");
 			}
 			else
 			{
@@ -52,7 +52,7 @@ int DrawMap(int map[21][21])
 		{
 			if (map[i][j] == 0)
 			{
-				printf("      ");
+				printf("     +");
 			}
 			else
 			{
@@ -66,7 +66,7 @@ int DrawMap(int map[21][21])
 		printf("%d", map[i][0]);
 		if (map[i][1] == 0)
 		{
-			printf("    ");
+			printf("   +");
 		}
 		else
 		{
@@ -76,27 +76,28 @@ int DrawMap(int map[21][21])
 		{
 			if (map[i][j] == 0)
 			{
-				printf("     ");
+				printf("    +");
 			}
 			else
 			{
 				printf("    %c", map[i][j]);
+			}
 		}
 		for (j = 10; j < 21; j++)
 		{
 			if (map[i][j] == 0)
 			{
-				printf("      ");
+				printf("     +");
 			}
 			else
 			{
-				printf("     %c", map[i][j]);//这个方式可以实现但现在还没办法改好
+				printf("     %c", map[i][j]);
 			}
 		}
-		printf("\n\n\n");
+			printf("\n\n\n");
 	}
-	PutChess(map);
-	system("pause");
+		PutChess(map);
+		system("pause");
 }
 int PutChess(int map[21][21])
 {
@@ -108,7 +109,7 @@ int PutChess(int map[21][21])
 		{
 			printf("黑方输入落子坐标,以空格分开:");
 			scanf_s("%d %d", &x, &y);
-			if (!(x > 0 && x < 21) || !(y > 0 || y < 21))
+			if (!(x > 0 && x < 21) || !(y > 0 && y < 21))
 			{
 				printf("输入不合法，请重新输入！\n");
 			}
@@ -124,8 +125,8 @@ int PutChess(int map[21][21])
 		}
 		else
 		{
-			DrawMap(map);
 			Judge(map);
+			DrawMap(map);
 		}
 	}
 }
