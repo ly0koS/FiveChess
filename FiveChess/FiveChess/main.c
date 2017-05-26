@@ -7,6 +7,8 @@ int Choose(int i,int map[21][21])
 	while (1)
 	{
 		system("cls");
+		printf("按任意键开始！\n");
+		system("pause");
 		printf("\n\n1、开始游戏！\n\n2、退出游戏\n\n请选择：");
 		scanf_s("%d", &i);
 		if (i == 1)
@@ -119,10 +121,10 @@ int PutChess(int map[21][21],int who)
 			else
 			{
 				map[x][y] = '*';
-				fflush(stdin);
 				printf("悔棋？(y/n):");
-				scanf_s("%c\n", &ch);
-				if (ch == y)
+				getchar();
+				scanf_s("%c", &ch);
+				if (ch == 'y')
 				{
 					WithDraw(map, x, y);
 				}
@@ -151,8 +153,9 @@ int PutChess(int map[21][21],int who)
 				map[x][y] = 'O';
 				fflush(stdin);
 				printf("悔棋？(y/n):");
-				scanf_s("%c\n", &ch);
-				if (ch == y)
+				getchar();
+				scanf_s("%c", &ch);
+				if (ch == 'y')
 				{
 					WithDraw(map, x, y);
 				}
