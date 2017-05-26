@@ -7,7 +7,7 @@ int Choose(int i,int map[21][21])
 	while (1)
 	{
 		system("cls");
-		printf("ÊäÈëÊı×ÖÒÔÑ¡ÔñÑ¡Ïî£¡\n1¡¢¿ªÊ¼ÓÎÏ·£¡\n2¡¢ÍË³ö\n");
+		printf("è¾“å…¥æ•°å­—ä»¥é€‰æ‹©é€‰é¡¹ï¼\n1ã€å¼€å§‹æ¸¸æˆï¼\n2ã€é€€å‡º\n");
 		scanf_s("%d", &i);
 		if (i == 1)
 		{
@@ -35,24 +35,70 @@ int DrawMap(int map[21][21],int who)
 		printf("%d    ", map[0][i]);
 	}
 	printf("\n\n\n");
-	for (i = 1; i < 21; i++)
+	for (i = 1; i < 10; i++)
 	{
-		printf("%d    ", map[i][0]);
-		for (j = 1; j < 21; j++)
+		printf("%d", map[i][0]);
+		for (j = 1; j < 10; j++)
 		{
 			if (map[i][j] == 0)
 			{
-				printf("    ");
+				printf("     ");
 			}
 			else
 			{
 				printf("    %c", map[i][j]);
 			}
 		}
+		for (j = 10; j < 21; j++)
+		{
+			if (map[i][j] == 0)
+			{
+				printf("      ");
+			}
+			else
+			{
+				printf("     %c", map[i][j]);
+			}
+		}
 		printf("\n\n\n");
 	}
-	PutChess(map,who);
-	system("pause");
+	for (i = 10; i < 21; i++)
+	{
+		printf("%d", map[i][0]);
+		if (map[i][1] == 0)
+		{
+			printf("    ");
+		}
+		else
+		{
+			printf("   %c", map[i][1]);
+		}
+		for (j = 2; j < 10; j++)
+		{
+			if (map[i][j] == 0)
+			{
+				printf("     ");
+			}
+			else
+			{
+				printf("    %c", map[i][j]);
+			}
+		}
+		for (j = 10; j < 21; j++)
+		{
+			if (map[i][j] == 0)
+			{
+				printf("      ");
+			}
+			else
+			{
+				printf("     %c", map[i][j]);
+			}
+		}
+			printf("\n\n\n");
+	}
+		PutChess(map,who);
+		system("pause");
 }
 int PutChess(int map[21][21],int who)
 {
@@ -63,18 +109,18 @@ int PutChess(int map[21][21],int who)
 		while (who==1)
 		{
 			getchar();
-			printf("ºÚ·½ÊäÈëÂä×Ó×ø±ê,ÒÔ¿Õ¸ñ·Ö¿ª:");
+			printf("é»‘æ–¹è¾“å…¥è½å­åæ ‡,ä»¥ç©ºæ ¼åˆ†å¼€:");
 			scanf_s("\n%d %d", &x, &y);
 			if (!(x > 0 && x < 21) || !(y > 0 || y < 21)||map[x][y]!=0)
 			{
-				printf("ÊäÈë²»ºÏ·¨£¬ÇëÖØĞÂÊäÈë£¡\n");
+				printf("è¾“å…¥ä¸åˆæ³•ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\n");
 				continue;
 			}
 			else
 			{
 				map[x][y] = '*';
 				fflush(stdin);
-				printf("»ÚÆå£¿(y/n):");
+				printf("æ‚”æ£‹ï¼Ÿ(y/n):");
 				scanf_s("%c\n", &ch);
 				if (ch == y)
 				{
@@ -93,18 +139,18 @@ int PutChess(int map[21][21],int who)
 		while (who==2)
 		{
 			getchar();
-			printf("°×·½ÊäÈëÂä×Ó×ø±ê,ÒÔ¿Õ¸ñ·Ö¿ª:");
+			printf("ç™½æ–¹è¾“å…¥è½å­åæ ‡,ä»¥ç©ºæ ¼åˆ†å¼€:");
 			scanf_s("\n%d %d", &x, &y);
 			if (!(x > 0 && x < 21) || !(y > 0 || y < 21)||map[x][y]!=0)
 			{
-				printf("ÊäÈë²»ºÏ·¨£¬ÇëÖØĞÂÊäÈë£¡\n");
+				printf("è¾“å…¥ä¸åˆæ³•ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\n");
 				continue;
 			}
 			else
 			{
 				map[x][y] = 'O';
 				fflush(stdin);
-				printf("»ÚÆå£¿(y/n):");
+				printf("æ‚”æ£‹ï¼Ÿ(y/n):");
 				scanf_s("%c\n", &ch);
 				if (ch == y)
 				{
