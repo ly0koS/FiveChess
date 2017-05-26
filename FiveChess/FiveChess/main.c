@@ -2,6 +2,7 @@
 #include<stdio.h>
 int Choose(int i,int map[21][21])
 {
+	int who = 1;
 	int system(const char *string);
 	while (1)
 	{
@@ -10,7 +11,7 @@ int Choose(int i,int map[21][21])
 		scanf_s("%d", &i);
 		if (i == 1)
 		{
-			DrawMap(map);
+			DrawMap(map,who);
 		}
 		else if (i == 2)
 		{
@@ -23,7 +24,7 @@ int Choose(int i,int map[21][21])
 		}
 	}
 }
-int DrawMap(int map[21][21])
+int DrawMap(int map[21][21],int who)
 {
 	system("cls");
 	int i, j;
@@ -50,16 +51,16 @@ int DrawMap(int map[21][21])
 		}
 		printf("\n\n\n");
 	}
-	PutChess(map);
+	PutChess(map,who);
 	system("pause");
 }
-int PutChess(int map[21][21])
+int PutChess(int map[21][21],int who)
 {
-	int x, y;
 	char ch;
 	while (1)
 	{
-		while (1)
+		int x=0, y=0;
+		while (who==1)
 		{
 			getchar();
 			printf("黑方输入落子坐标,以空格分开:");
@@ -71,25 +72,25 @@ int PutChess(int map[21][21])
 			}
 			else
 			{
-				break;
+				map[x][y] = '*';
+				fflush(stdin);
+				printf("悔棋？(y/n):");
+				scanf_s("%c\n", &ch);
+				if (ch == y)
+				{
+					WithDraw(map, x, y);
+				}
+				else
+				{
+					Judge(map);
+					who = 2;
+					DrawMap(map, who);
+					break;
+
+				}
 			}
 		}
-		map[x][y] = '*';
-		fflush(stdin);
-		printf("悔棋？(y/n):");
-		scanf_s("%c\n", &ch);
-		if (ch == y)
-		{
-			WithDraw(map, x, y);
-		}
-		else
-		{
-			Judge(map);
-			DrawMap(map);
-			break;
-
-		}
-		while (1)
+		while (who==2)
 		{
 			getchar();
 			printf("白方输入落子坐标,以空格分开:");
@@ -101,23 +102,24 @@ int PutChess(int map[21][21])
 			}
 			else
 			{
-				break;
+				map[x][y] = 'O';
+				fflush(stdin);
+				printf("悔棋？(y/n):");
+				scanf_s("%c\n", &ch);
+				if (ch == y)
+				{
+					WithDraw(map, x, y);
+				}
+				else
+				{
+					Judge(map);
+					who = 1;
+					DrawMap(map, who);
+					break;
+				}
 			}
 		}
-		map[x][y] = 'O';
-		fflush(stdin);
-		printf("悔棋？(y/n):");
-		scanf_s("%c\n", &ch);
-		if (ch == y)
-		{
-			WithDraw(map, x, y);
-		}
-		else
-		{
-			Judge(map);
-			DrawMap(map);
-			break;
-		}
+		
 	}
 }
 int WithDraw(int map[21][21],int x,int y)
