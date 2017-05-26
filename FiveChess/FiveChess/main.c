@@ -2,15 +2,16 @@
 #include<stdio.h>
 int Choose(int i,int map[21][21])
 {
+	int who = 1;
 	int system(const char *string);
 	while (1)
 	{
 		system("cls");
-		printf("ÊäÈëÊý×ÖÒÔÑ¡ÔñÑ¡Ïî£¡\n1¡¢¿ªÊ¼ÓÎÏ·£¡\n2¡¢ÍË³ö\n");
+		printf("è¾“å…¥æ•°å­—ä»¥é€‰æ‹©é€‰é¡¹ï¼\n1ã€å¼€å§‹æ¸¸æˆï¼\n2ã€é€€å‡º\n");
 		scanf_s("%d", &i);
 		if (i == 1)
 		{
-			DrawMap(map);
+			DrawMap(map,who);
 		}
 		else if (i == 2)
 		{
@@ -23,7 +24,7 @@ int Choose(int i,int map[21][21])
 		}
 	}
 }
-int DrawMap(int map[21][21])
+int DrawMap(int map[21][21],int who)
 {
 	system("cls");
 	int i, j;
@@ -96,43 +97,81 @@ int DrawMap(int map[21][21])
 		}
 			printf("\n\n\n");
 	}
-		PutChess(map);
+		PutChess(map,who);
 		system("pause");
 }
-int PutChess(int map[21][21])
+int PutChess(int map[21][21],int who)
 {
-	int x, y;
 	char ch;
 	while (1)
 	{
-		while (1)
+		int x=0, y=0;
+		while (who==1)
 		{
-			printf("ºÚ·½ÊäÈëÂä×Ó×ø±ê,ÒÔ¿Õ¸ñ·Ö¿ª:");
-			scanf_s("%d %d", &x, &y);
-			if (!(x > 0 && x < 21) || !(y > 0 && y < 21))
+			getchar();
+			printf("é»‘æ–¹è¾“å…¥è½å­åæ ‡,ä»¥ç©ºæ ¼åˆ†å¼€:");
+			scanf_s("\n%d %d", &x, &y);
+			if (!(x > 0 && x < 21) || !(y > 0 || y < 21)||map[x][y]!=0)
 			{
-				printf("ÊäÈë²»ºÏ·¨£¬ÇëÖØÐÂÊäÈë£¡\n");
+				printf("è¾“å…¥ä¸åˆæ³•ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\n");
+				continue;
 			}
 			else
 			{
-				break;
+				map[x][y] = '*';
+				fflush(stdin);
+				printf("æ‚”æ£‹ï¼Ÿ(y/n):");
+				scanf_s("%c\n", &ch);
+				if (ch == y)
+				{
+					WithDraw(map, x, y);
+				}
+				else
+				{
+					Judge(map);
+					who = 2;
+					DrawMap(map, who);
+					break;
+
+				}
 			}
 		}
-		map[x][y] = '*';
-		if ((ch = getchar()) == 'Z')
+		while (who==2)
 		{
-			WithDraw(map);
+			getchar();
+			printf("ç™½æ–¹è¾“å…¥è½å­åæ ‡,ä»¥ç©ºæ ¼åˆ†å¼€:");
+			scanf_s("\n%d %d", &x, &y);
+			if (!(x > 0 && x < 21) || !(y > 0 || y < 21)||map[x][y]!=0)
+			{
+				printf("è¾“å…¥ä¸åˆæ³•ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\n");
+				continue;
+			}
+			else
+			{
+				map[x][y] = 'O';
+				fflush(stdin);
+				printf("æ‚”æ£‹ï¼Ÿ(y/n):");
+				scanf_s("%c\n", &ch);
+				if (ch == y)
+				{
+					WithDraw(map, x, y);
+				}
+				else
+				{
+					Judge(map);
+					who = 1;
+					DrawMap(map, who);
+					break;
+				}
+			}
 		}
-		else
-		{
-			Judge(map);
-			DrawMap(map);
-		}
+		
 	}
 }
-int WithDraw()
+int WithDraw(int map[21][21],int x,int y)
 {
-
+	map[x][y] = 0;
+	return 0;
 }
 int Judge(int map[21][21])
 {
