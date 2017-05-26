@@ -224,35 +224,35 @@ int Judge(int map[21][21])
 				}
 				Result(flag);
 			}
-			else if (map=='#')
+			else if (map=='O')
 			{
 				flag = 0;
 				for (x = i+1, y = j+1; x < i + 5, y < j + 5; x++, y++)
 				{
-					if (map[x][j] == '#')
+					if (map[x][j] == 'O')
 					{
 						flag = 2;
 					}
-					else if (map[i][y] == '#')
+					else if (map[i][y] == 'O')
 					{
 						flag = 2;
 					}
-					else if (map[x][y] == '#')
+					else if (map[x][y] == 'O')
 					{
 						flag = 2;
 					}
 				}
 				for (x = i + 4, y = j + 4; x >= i, y >= j; x--, y--)
 				{
-					if (map[x][j] == '#')
+					if (map[x][j] == 'O')
 					{
 						flag = 2;
 					}
-					else if (map[i][y] == '#')
+					else if (map[i][y] == 'O')
 					{
 						flag = 2;
 					}
-					else if (map[x][y] == '#')
+					else if (map[x][y] == 'O')
 					{
 						flag = 2;
 					}
