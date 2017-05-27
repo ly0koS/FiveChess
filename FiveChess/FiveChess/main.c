@@ -7,8 +7,6 @@ int Choose(int i,int map[21][21])
 	while (1)
 	{
 		system("cls");
-		printf("按任意键开始！\n");
-		system("pause");
 		printf("\n\n1、开始游戏！\n\n2、退出游戏\n\n请选择：");
 		scanf_s("%d", &i);
 		if (i == 1)
@@ -130,7 +128,7 @@ int PutChess(int map[21][21],int who)
 				}
 				else
 				{
-					Judge(map);
+					Judge(map,x,y,who);
 					who = 2;
 					DrawMap(map, who);
 					break;
@@ -161,7 +159,7 @@ int PutChess(int map[21][21],int who)
 				}
 				else
 				{
-					Judge(map);
+					Judge(map,x,y,who);
 					who = 1;
 					DrawMap(map, who);
 					break;
@@ -176,90 +174,101 @@ int WithDraw(int map[21][21],int x,int y)
 	map[x][y] = 0;
 	return 0;
 }
-int Judge(int map[21][21])
+int Judge(int map[21][21],int x,int y,int who)
 {
 	int i = 0, j = 0;
-	int x = 0, y = 0;
-	int flag = 0;
-	for (i = 1; i < 21; i++)
+	int flag = 0,count=1;
+	for (i = x+1, j = y+1; i < x + 5, j < x + 5; i++, j++)
 	{
-		for (j = 1; j < 21; j++)
+		if (who == 1)
 		{
-			if (map[i][j] == '*')
+			if (map[x][j] == '*')
 			{
-				for (x = i+1, y = j+1; x < i + 5, y < j + 5; x++, y++)
-				{
-					if (map[x][j] == '*')
-					{
-						flag = 1;
-					}
-					else if (map[i][y] == '*')
-					{
-						flag = 1;
-					}
-					else if (map[x][y] == '*')
-					{
-						flag = 1;
-					}
-					else
-					{
-						flag = 0;
-					}
-				}
-				for (x = i-1, y = j-1; x >i-5, y > j-5; x--, y--)
-				{
-					if (map[x][j] == '*')
-					{
-						flag = 1;
-					}
-					else if (map[i][y] == '*')
-					{
-						flag = 1;
-					}
-					else if (map[x][y] == '*')
-					{
-						flag = 1;
-					}
-					else
-					{
-						flag = 0;
-					}
-				}
+				count++;
+			}
+			else if (map[i][y] == '*')
+			{
+				count++;
+			}
+			else if (map[i][j] == '*')
+			{
+				count++;
+			}
+			if (count == 5)
+			{
+				flag = 1;
 				Result(flag);
 			}
-			else if (map=='O')
+			else
 			{
-				flag = 0;
-				for (x = i+1, y = j+1; x < i + 5, y < j + 5; x++, y++)
-				{
-					if (map[x][j] == 'O')
-					{
-						flag = 2;
-					}
-					else if (map[i][y] == 'O')
-					{
-						flag = 2;
-					}
-					else if (map[x][y] == 'O')
-					{
-						flag = 2;
-					}
-				}
-				for (x = i + 4, y = j + 4; x >= i, y >= j; x--, y--)
-				{
-					if (map[x][j] == 'O')
-					{
-						flag = 2;
-					}
-					else if (map[i][y] == 'O')
-					{
-						flag = 2;
-					}
-					else if (map[x][y] == 'O')
-					{
-						flag = 2;
-					}
-				}
+				count = 1;
+			}
+		}
+		else if (who == 2)
+		{
+			if (map[x][j] == 'O')
+			{
+				count++;
+			}
+			else if (map[i][y] == 'O')
+			{
+				count++;
+			}
+			else if (map[i][j] == 'O')
+			{
+				count++;
+			}
+			if (count == 5)
+			{
+				flag = 2;
+				Result(flag);
+			}
+			else
+			{
+				count = 1;
+			}
+		}
+	}
+	count = 1;
+	for (i = x-1, j = y-1; i > x - 5, j > x - 5; i--, j--)
+	{
+		if (who == 1)
+		{
+			if (map[x][j] == '*')
+			{
+				count++;
+			}
+			else if (map[i][y] == '*')
+			{
+				count++;
+			}
+			else if (map[i][j] == '*')
+			{
+				count++;
+			}
+			if (count == 5)
+			{
+				flag = 1;
+				Result(flag);
+			}
+		}
+		else if (who == 2)
+		{
+			if (map[x][j] == 'O')
+			{
+				count++;
+			}
+			else if (map[i][y] == 'O')
+			{
+				count++;
+			}
+			else if (map[i][j] == 'O')
+			{
+				count++;
+			}
+			if (count == 5)
+			{
+				flag = 1;
 				Result(flag);
 			}
 		}
